@@ -1,0 +1,64 @@
+{
+  "name": "A2_base_relu",
+  "note": "(eta0,eta1), ReLU",
+  "D": 1.1597945369221154,
+  "sigma": 0.0077662087852225625,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "box_counts": [
+    695,
+    322,
+    142,
+    64,
+    28
+  ],
+  "conv_frac": 0.9904022216796875,
+  "osc_frac": 0.0095977783203125,
+  "div_frac": 0.0,
+  "nan_frac": 0.0,
+  "seconds": 103.94527626037598,
+  "config": {
+    "name": "A2_base_relu",
+    "x_name": "lr0",
+    "y_name": "lr1",
+    "x_range": [
+      0.01,
+      10.0
+    ],
+    "y_range": [
+      0.01,
+      10.0
+    ],
+    "x_log": true,
+    "y_log": true,
+    "resolution": 256,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "relu",
+    "optimizer": "sgd",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 0,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 1,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

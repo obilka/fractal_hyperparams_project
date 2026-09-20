@@ -1,0 +1,64 @@
+{
+  "name": "D2_digits16",
+  "note": "sklearn digits (PCA-16), |D|=16",
+  "D": 1.49353497431981,
+  "sigma": 0.07259275882991777,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "box_counts": [
+    1718,
+    774,
+    298,
+    93,
+    28
+  ],
+  "conv_frac": 0.34381103515625,
+  "osc_frac": 0.0380401611328125,
+  "div_frac": 0.018341064453125,
+  "nan_frac": 0.5998077392578125,
+  "seconds": 156.64221239089966,
+  "config": {
+    "name": "D2_digits16",
+    "x_name": "lr0",
+    "y_name": "lr1",
+    "x_range": [
+      0.1,
+      1000.0
+    ],
+    "y_range": [
+      0.1,
+      1000.0
+    ],
+    "x_log": true,
+    "y_log": true,
+    "resolution": 256,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "tanh",
+    "optimizer": "sgd",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 16,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "digits",
+      "n_samples": 16,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

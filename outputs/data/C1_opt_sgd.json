@@ -1,0 +1,64 @@
+{
+  "name": "C1_opt_sgd",
+  "note": "SGD",
+  "D": 1.632800816863024,
+  "sigma": 0.04072422115609651,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "box_counts": [
+    3784,
+    1466,
+    464,
+    138,
+    43
+  ],
+  "conv_frac": 0.4852142333984375,
+  "osc_frac": 0.1945037841796875,
+  "div_frac": 0.0646514892578125,
+  "nan_frac": 0.2556304931640625,
+  "seconds": 107.16686224937439,
+  "config": {
+    "name": "C1_opt_sgd",
+    "x_name": "lr0",
+    "y_name": "lr1",
+    "x_range": [
+      0.01,
+      10.0
+    ],
+    "y_range": [
+      0.01,
+      10.0
+    ],
+    "x_log": true,
+    "y_log": true,
+    "resolution": 256,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "tanh",
+    "optimizer": "sgd",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 0,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 1,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

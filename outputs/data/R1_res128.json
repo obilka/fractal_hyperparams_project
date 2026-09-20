@@ -1,0 +1,62 @@
+{
+  "name": "R1_res128",
+  "note": "исследование зависимости от разрешения, 128x128",
+  "D": 1.5112434276607418,
+  "sigma": 0.05130377332057344,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16
+  ],
+  "box_counts": [
+    980,
+    395,
+    132,
+    43
+  ],
+  "conv_frac": 0.48968505859375,
+  "osc_frac": 0.187744140625,
+  "div_frac": 0.06475830078125,
+  "nan_frac": 0.2578125,
+  "seconds": 33.463382720947266,
+  "config": {
+    "name": "R1_res128",
+    "x_name": "lr0",
+    "y_name": "lr1",
+    "x_range": [
+      0.01,
+      10.0
+    ],
+    "y_range": [
+      0.01,
+      10.0
+    ],
+    "x_log": true,
+    "y_log": true,
+    "resolution": 128,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "tanh",
+    "optimizer": "sgd",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 0,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 1,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

@@ -1,0 +1,64 @@
+{
+  "name": "A5_relu_mb",
+  "note": "ReLU, |D|=32, полный батч",
+  "D": 1.0742073369428498,
+  "sigma": 0.01010715585823679,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "box_counts": [
+    155,
+    73,
+    35,
+    16,
+    8
+  ],
+  "conv_frac": 0.06304931640625,
+  "osc_frac": 0.00091552734375,
+  "div_frac": 0.0,
+  "nan_frac": 0.93603515625,
+  "seconds": 229.3498694896698,
+  "config": {
+    "name": "A5_relu_mb",
+    "x_name": "lr0",
+    "y_name": "lr1",
+    "x_range": [
+      0.1,
+      1000.0
+    ],
+    "y_range": [
+      0.1,
+      1000.0
+    ],
+    "x_log": true,
+    "y_log": true,
+    "resolution": 256,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "relu",
+    "optimizer": "sgd",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 32,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 32,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

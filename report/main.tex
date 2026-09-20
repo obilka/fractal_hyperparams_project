@@ -1,0 +1,144 @@
+% =====================================================================
+%  Многомерные фрактальные границы обучаемости нейросетей
+%  Курсовая работа (продолжение НИР), СПбГУ, математико-механический факультет
+%  Компиляция: xelatex main.tex  (дважды, для оглавления)
+% =====================================================================
+\documentclass[12pt,a4paper]{article}
+
+\usepackage{fontspec}
+\usepackage{polyglossia}
+\setmainlanguage{russian}
+\setotherlanguage{english}
+\setmainfont{Liberation Serif}
+\setsansfont{Liberation Sans}
+\setmonofont{Liberation Mono}[Scale=0.85]
+
+\usepackage{geometry}
+\geometry{left=30mm,right=20mm,top=20mm,bottom=20mm}
+\usepackage{setspace}
+\onehalfspacing
+\setlength{\parindent}{1.25cm}
+
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage{subcaption}
+\usepackage{longtable}
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage[unicode,hidelinks]{hyperref}
+\usepackage{enumitem}
+
+\graphicspath{{figures/}{../outputs/figures/}}
+
+% --- оформление подписей и заголовков -------------------------------
+\usepackage{caption}
+\captionsetup{labelsep=period,font=small}
+\captionsetup[figure]{name=Рис.}
+\captionsetup[table]{name=Таблица}
+\renewcommand{\figurename}{Рис.}
+\renewcommand{\tablename}{Таблица}
+\renewcommand{\contentsname}{Содержание}
+\renewcommand{\refname}{Список литературы}
+
+% --- теоремы ---------------------------------------------------------
+\theoremstyle{plain}
+\newtheorem{proposition}{Предложение}
+\newtheorem{corollary}{Следствие}
+\theoremstyle{definition}
+\newtheorem{definition}{Определение}
+\renewcommand{\proofname}{Доказательство}
+
+% --- листинги --------------------------------------------------------
+\lstset{
+  basicstyle=\ttfamily\footnotesize,
+  breaklines=true,
+  frame=single,
+  numbers=left,
+  numberstyle=\tiny,
+  showstringspaces=false,
+  keywordstyle=\color{blue!60!black},
+  commentstyle=\color{green!40!black},
+  extendedchars=true,
+  literate={а}{{\selectfont\char224}}1 {б}{{\selectfont\char225}}1
+}
+\renewcommand{\lstlistingname}{Листинг}
+
+% --- числа, посчитанные скриптами (генерируются автоматически) -------
+\input{tables/numbers.tex}
+
+\sloppy
+\hbadness=10000
+
+\begin{document}
+
+% ===================== ТИТУЛЬНЫЙ ЛИСТ ===============================
+\begin{titlepage}
+\thispagestyle{empty}
+\centering
+{\bfseries Санкт-Петербургский государственный университет}\\[4mm]
+{\bfseries Прикладная математика и информатика}
+
+\vspace{22mm}
+
+{\large\bfseries ОТЧЕТ}\\[4mm]
+{\small по учебной практике 2 (научно-исследовательской работе)}\\[3mm]
+{\small (семестр 2)}
+
+\vspace{20mm}
+
+{\large\bfseries Многомерные фрактальные границы обучаемости нейросетей:}\\[3mm]
+{\large\bfseries шаг обучения, инерция, затухание весов}\\[3mm]
+{\large\bfseries и адаптивные оптимизаторы}
+
+\vspace{30mm}
+
+\raggedright
+\begin{minipage}[c]{0.56\textwidth}
+Выполнил:\\
+Бухаров Дмитрий Иванович, группа 25.Б21
+\end{minipage}%
+\begin{minipage}[c]{0.40\textwidth}
+\raggedright
+\includegraphics[width=30mm]{signature.png}
+\end{minipage}
+
+\vspace{9mm}
+
+Научный руководитель:\\
+профессор, доктор физ.-мат. наук\\
+Мокаев Тимур Наилевич
+
+\vspace{9mm}
+
+Кафедра прикладной кибернетики
+
+\vfill
+\centering
+Санкт-Петербург\\
+2026 г.
+\end{titlepage}
+
+\setcounter{page}{2}
+
+% ===================== ОГЛАВЛЕНИЕ ===================================
+\tableofcontents
+\newpage
+
+\input{sections/01_intro.tex}
+\input{sections/02_problem.tex}
+\input{sections/03_review.tex}
+\input{sections/04_theory.tex}
+\input{sections/05_methods.tex}
+\input{sections/06_results.tex}
+\input{sections/07_discussion.tex}
+\input{sections/08_conclusion.tex}
+
+\newpage
+\input{sections/09_bibliography.tex}
+
+\newpage
+\appendix
+\input{sections/10_appendix.tex}
+
+\end{document}

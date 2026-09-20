@@ -1,0 +1,64 @@
+{
+  "name": "C2_opt_momentum",
+  "note": "SGD+momentum, beta=0.9",
+  "D": 1.0371920448778578,
+  "sigma": 0.010946761948528812,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "box_counts": [
+    465,
+    232,
+    114,
+    56,
+    26
+  ],
+  "conv_frac": 0.822845458984375,
+  "osc_frac": 0.0,
+  "div_frac": 0.016998291015625,
+  "nan_frac": 0.16015625,
+  "seconds": 49.684470653533936,
+  "config": {
+    "name": "C2_opt_momentum",
+    "x_name": "lr0",
+    "y_name": "lr1",
+    "x_range": [
+      0.001,
+      10.0
+    ],
+    "y_range": [
+      0.001,
+      10.0
+    ],
+    "x_log": true,
+    "y_log": true,
+    "resolution": 256,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "tanh",
+    "optimizer": "momentum",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.9,
+    "wd": 0.0,
+    "batch": 0,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 1,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

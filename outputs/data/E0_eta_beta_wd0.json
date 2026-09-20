@@ -1,0 +1,64 @@
+{
+  "name": "E0_eta_beta_wd0",
+  "note": "сечение (eta,beta) при lambda_wd=0",
+  "D": 1.6156144017344016,
+  "sigma": 0.04245872108970694,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "box_counts": [
+    4097,
+    1640,
+    509,
+    157,
+    49
+  ],
+  "conv_frac": 0.5172271728515625,
+  "osc_frac": 0.204559326171875,
+  "div_frac": 0.0480804443359375,
+  "nan_frac": 0.230133056640625,
+  "seconds": 98.41989541053772,
+  "config": {
+    "name": "E0_eta_beta_wd0",
+    "x_name": "lr",
+    "y_name": "beta",
+    "x_range": [
+      0.01,
+      10.0
+    ],
+    "y_range": [
+      0.0,
+      0.99
+    ],
+    "x_log": true,
+    "y_log": false,
+    "resolution": 256,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "tanh",
+    "optimizer": "momentum",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 0,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 1,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

@@ -1,0 +1,176 @@
+\section{Исходный код}\label{app:code}
+
+Полный исходный код, конфигурации и сохранённые результаты доступны в
+репозитории проекта:
+\begin{center}
+\url{https://github.com/obilka/fractal_hyperparams_project}
+\end{center}
+Структура каталогов описана в приложении~\ref{app:repro}.
+Ниже приведены ключевые фрагменты.
+
+\subsection{Ансамблевая итерация обучения}
+
+Основной приём реализации --- одновременное обучение всех узлов сетки
+гиперпараметров как ансамбля независимых сетей. Веса хранятся с ведущей осью
+$G$ (номер конфигурации), гиперпараметры транслируются по осям весов.
+
+\begin{lstlisting}[language=Python,caption={Прямой и обратный проход для ансамбля сетей}]
+H  = np.einsum("nd,ghd->gnh", Xb, W0, optimize=True)
+Ha = _act(H, cfg.activation)
+out = np.einsum("gnh,goh->gno", Ha, W1, optimize=True)
+R = out - Yb
+loss = np.einsum("gno,gno->g", R, R) / (Nb * d_out)
+
+# ручное обратное распространение
+go  = (2.0 / (Nb * d_out)) * R
+gW1 = np.einsum("gno,gnh->goh", go, Ha, optimize=True)
+gha = np.einsum("gno,goh->gnh", go, W1, optimize=True)
+gh  = gha * _act_grad(H, Ha, cfg.activation)
+gW0 = np.einsum("gnh,nd->ghd", gh, Xb, optimize=True)
+
+# L2-регуляризация (weight decay)
+gW0 = gW0 + wd * W0
+gW1 = gW1 + wd * W1
+\end{lstlisting}
+
+\subsection{Правила обновления}
+
+\begin{lstlisting}[language=Python,caption={Реализация четырёх оптимизаторов}]
+if opt == "sgd":
+    W0 -= lr0 * gW0
+    W1 -= lr1 * gW1
+elif opt == "momentum":
+    M0 = beta * M0 + gW0
+    M1 = beta * M1 + gW1
+    W0 -= lr0 * M0
+    W1 -= lr1 * M1
+elif opt == "rmsprop":
+    V0 = b2 * V0 + (1 - b2) * gW0 * gW0
+    V1 = b2 * V1 + (1 - b2) * gW1 * gW1
+    W0 -= lr0 * gW0 / (np.sqrt(V0) + eps)
+    W1 -= lr1 * gW1 / (np.sqrt(V1) + eps)
+elif opt == "adam":
+    M0 = b1 * M0 + (1 - b1) * gW0
+    V0 = b2 * V0 + (1 - b2) * gW0 * gW0
+    bc1, bc2 = 1 - np.power(b1, t + 1), 1 - np.power(b2, t + 1)
+    W0 -= lr0 * (M0 / bc1) / (np.sqrt(V0 / bc2) + eps)
+    # аналогично для второго слоя
+\end{lstlisting}
+
+\subsection{Классификация режимов}
+
+\begin{lstlisting}[language=Python,caption={Классификация траектории на четыре режима}]
+m20       = tail[:, -TAIL_SHORT:].mean(axis=1)
+m20_first = tail[:, :TAIL_SHORT].mean(axis=1)
+rel       = tail.std(axis=1) / np.maximum(tail.mean(axis=1), 1e-300)
+
+stabilized = rel < CONV_TOL              # вышли на стационар
+decreasing = m20 < 0.99 * m20_first      # loss продолжает убывать
+conv = (m20 < 1.0) & (stabilized | decreasing) & np.isfinite(m20)
+div  = (stats["max_l"] > DIV_THRESHOLD) | (m20 > DIV_THRESHOLD)
+
+regime[:]             = OSCILLATING
+regime[conv]          = CONVERGED
+regime[div & ~nonfin] = DIVERGED
+regime[nonfin]        = NONFINITE
+\end{lstlisting}
+
+\subsection{Извлечение границы и box-counting}
+
+\begin{lstlisting}[language=Python,caption={Морфологическое извлечение границы и оценка размерности}]
+def extract_boundary(regime):
+    B = (regime == CONVERGED)
+    st = ndimage.generate_binary_structure(2, 1)
+    bnd = np.logical_xor(ndimage.binary_dilation(B, structure=st),
+                         ndimage.binary_erosion(B, structure=st))
+    return skeletonize(bnd) if bnd.sum() > 0 else bnd
+
+def box_counting_dimension(boundary, min_box=2, max_div=8):
+    s, sizes, counts = min_box, [], []
+    while s <= max(min_box * 2, min(boundary.shape) // max_div):
+        ny = (boundary.shape[0] // s) * s
+        nx = (boundary.shape[1] // s) * s
+        red = boundary[:ny, :nx].reshape(ny // s, s, nx // s, s).any(axis=(1, 3))
+        if red.sum() > 0:
+            sizes.append(s); counts.append(int(red.sum()))
+        s *= 2
+    coef, cov = np.polyfit(np.log(sizes), np.log(counts), 1, cov=True)
+    return -coef[0], float(np.sqrt(cov[0, 0])), sizes, counts
+\end{lstlisting}
+
+\subsection{Теоретический блок}
+
+\begin{lstlisting}[language=Python,caption={Спектральный радиус матрицы перехода метода с инерцией}]
+def momentum_spectral_radius(eta_lambda, beta):
+    x, b = np.asarray(eta_lambda), np.asarray(beta)
+    tr, det = 1.0 + b - x, b
+    disc = tr * tr - 4.0 * det
+    sq = np.sqrt(np.abs(disc))
+    r_real = np.maximum(np.abs((tr + sq) / 2.0), np.abs((tr - sq) / 2.0))
+    return np.where(disc >= 0, r_real, np.sqrt(np.abs(det)))
+\end{lstlisting}
+
+\section{Инструкция по воспроизведению}\label{app:repro}
+
+\subsection{Структура проекта}
+
+\begin{verbatim}
+src/fractal_hp.py        ядро: модель, оптимизаторы, сканирование,
+                         box-counting, теоретический блок
+src/run_experiments.py   все эксперименты (стадии A-H), resume-режим
+src/make_figures.py      построение всех рисунков
+src/make_tables.py       генерация LaTeX-таблиц и макросов с числами
+report/main.tex          отчёт (XeLaTeX)
+report/sections/         разделы отчёта
+report/tables/           таблицы, генерируются автоматически
+report/figures/          подпись для титульного листа
+outputs/data/            результаты сканирований (.npz) и метаданные (.json)
+outputs/figures/         рисунки
+run_all.sh               полный цикл: расчёты, рисунки, таблицы, сборка PDF
+requirements.txt         версии библиотек
+\end{verbatim}
+
+\subsection{Требования}
+
+Python 3.10 и выше; NumPy, SciPy, scikit-image, scikit-learn, Matplotlib.
+PyTorch не требуется. Для сборки отчёта --- \TeX{}Live с XeLaTeX и пакетами
+polyglossia, fontspec, geometry, setspace, booktabs, subcaption, listings,
+hyperref; шрифт Liberation Serif. Оперативной памяти достаточно 2 ГБ,
+расчёты выполняются на CPU.
+
+\subsection{Запуск}
+
+\begin{lstlisting}[language=bash,caption={Полный цикл воспроизведения}]
+git clone https://github.com/obilka/fractal_hyperparams_project.git
+cd fractal_hyperparams_project
+pip install -r requirements.txt
+bash run_all.sh
+\end{lstlisting}
+
+Скрипт последовательно выполняет расчёты (стадии A--H), строит рисунки и
+таблицы и собирает PDF. Отдельные стадии запускаются как
+\texttt{python3 src/run\_experiments.py B C}. Расчёт поддерживает
+возобновление: результат каждого блока из 4096 конфигураций сохраняется в
+файл контрольной точки, и повторный запуск продолжает работу с места
+остановки, а уже завершённые эксперименты пропускаются.
+
+Суммарное машинное время всех экспериментов --- \TotalHours~ч на одном ядре
+CPU.
+
+\subsection{Фиксация случайности и точности}
+
+Seed равен 42 для генерации данных, $42+1000$ для инициализации весов и
+$42+7$ для порядка примеров в мини-батчах. Инициализация одинакова для всех
+узлов сетки в пределах одного эксперимента. Тип данных по умолчанию
+\texttt{float64}; эксперимент G1 выполнен в \texttt{float32} для оценки
+влияния точности. Все параметры запуска сохраняются в JSON рядом с
+результатом.
+
+\section{Дополнительные материалы}
+
+Числовые значения, приведённые в тексте и таблицах отчёта, подставляются
+автоматически из файлов \texttt{outputs/data/*.json} через генерируемый файл
+\texttt{report/tables/numbers.tex}. Это гарантирует, что текст отчёта,
+таблицы и сохранённые результаты расчётов не могут разойтись между собой:
+при повторном запуске расчётов и пересборке отчёта все числа обновляются
+согласованно.

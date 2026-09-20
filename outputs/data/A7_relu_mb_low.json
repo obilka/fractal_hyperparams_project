@@ -1,0 +1,64 @@
+{
+  "name": "A7_relu_mb_low",
+  "note": "ReLU, |D|=32, окно по своему порогу",
+  "D": 1.2817951521169884,
+  "sigma": 0.04483017177319726,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "box_counts": [
+    1055,
+    505,
+    219,
+    81,
+    31
+  ],
+  "conv_frac": 0.465240478515625,
+  "osc_frac": 0.1078948974609375,
+  "div_frac": 0.0,
+  "nan_frac": 0.4268646240234375,
+  "seconds": 60.89489531517029,
+  "config": {
+    "name": "A7_relu_mb_low",
+    "x_name": "lr0",
+    "y_name": "lr1",
+    "x_range": [
+      0.001,
+      10.0
+    ],
+    "y_range": [
+      0.001,
+      10.0
+    ],
+    "x_log": true,
+    "y_log": true,
+    "resolution": 256,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "relu",
+    "optimizer": "sgd",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 32,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 32,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

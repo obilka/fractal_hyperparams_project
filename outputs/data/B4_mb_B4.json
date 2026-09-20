@@ -1,0 +1,64 @@
+{
+  "name": "B4_mb_B4",
+  "note": "(eta0,eta1), |D|=32, B=4",
+  "D": 1.5677641809470433,
+  "sigma": 0.04988930953465429,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "box_counts": [
+    2317,
+    957,
+    323,
+    102,
+    31
+  ],
+  "conv_frac": 0.2967987060546875,
+  "osc_frac": 0.0794525146484375,
+  "div_frac": 0.088775634765625,
+  "nan_frac": 0.53497314453125,
+  "seconds": 190.22234797477722,
+  "config": {
+    "name": "B4_mb_B4",
+    "x_name": "lr0",
+    "y_name": "lr1",
+    "x_range": [
+      0.1,
+      1000.0
+    ],
+    "y_range": [
+      0.1,
+      1000.0
+    ],
+    "x_log": true,
+    "y_log": true,
+    "resolution": 256,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "tanh",
+    "optimizer": "sgd",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 4,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 32,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

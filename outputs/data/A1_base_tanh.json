@@ -1,0 +1,66 @@
+{
+  "name": "A1_base_tanh",
+  "note": "базовая карта (eta0,eta1), tanh",
+  "D": 1.6880964772295537,
+  "sigma": 0.035152251953447754,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16,
+    32,
+    64
+  ],
+  "box_counts": [
+    13944,
+    5505,
+    1686,
+    493,
+    144,
+    44
+  ],
+  "conv_frac": 0.4859199523925781,
+  "osc_frac": 0.19392776489257812,
+  "div_frac": 0.06429290771484375,
+  "nan_frac": 0.255859375,
+  "seconds": 234.03795218467712,
+  "config": {
+    "name": "A1_base_tanh",
+    "x_name": "lr0",
+    "y_name": "lr1",
+    "x_range": [
+      0.01,
+      10.0
+    ],
+    "y_range": [
+      0.01,
+      10.0
+    ],
+    "x_log": true,
+    "y_log": true,
+    "resolution": 512,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "tanh",
+    "optimizer": "sgd",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 0,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 1,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

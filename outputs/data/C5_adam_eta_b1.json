@@ -1,0 +1,64 @@
+{
+  "name": "C5_adam_eta_b1",
+  "note": "Adam, сечение (eta,beta1)",
+  "D": 1.697779141287387,
+  "sigma": 0.07078557076156537,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "box_counts": [
+    6427,
+    2576,
+    822,
+    229,
+    60
+  ],
+  "conv_frac": 0.484619140625,
+  "osc_frac": 0.515289306640625,
+  "div_frac": 9.1552734375e-05,
+  "nan_frac": 0.0,
+  "seconds": 32.2480525970459,
+  "config": {
+    "name": "C5_adam_eta_b1",
+    "x_name": "lr",
+    "y_name": "beta1",
+    "x_range": [
+      0.01,
+      100.0
+    ],
+    "y_range": [
+      0.0,
+      0.999
+    ],
+    "x_log": true,
+    "y_log": false,
+    "resolution": 256,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "tanh",
+    "optimizer": "adam",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 0,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 1,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

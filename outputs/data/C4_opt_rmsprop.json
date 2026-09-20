@@ -1,0 +1,64 @@
+{
+  "name": "C4_opt_rmsprop",
+  "note": "RMSprop",
+  "D": 1.5080308920035164,
+  "sigma": 0.06775810578514882,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "box_counts": [
+    3255,
+    1421,
+    499,
+    181,
+    49
+  ],
+  "conv_frac": 0.1982269287109375,
+  "osc_frac": 0.5378570556640625,
+  "div_frac": 0.263916015625,
+  "nan_frac": 0.0,
+  "seconds": 39.843329668045044,
+  "config": {
+    "name": "C4_opt_rmsprop",
+    "x_name": "lr0",
+    "y_name": "lr1",
+    "x_range": [
+      0.01,
+      100.0
+    ],
+    "y_range": [
+      0.01,
+      100.0
+    ],
+    "x_log": true,
+    "y_log": true,
+    "resolution": 256,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "tanh",
+    "optimizer": "rmsprop",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 0,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 1,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

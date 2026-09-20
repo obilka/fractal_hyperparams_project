@@ -1,0 +1,64 @@
+{
+  "name": "G1_float32",
+  "note": "(eta,beta), float32",
+  "D": 1.7161434522848122,
+  "sigma": 0.060080825218720234,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "box_counts": [
+    5441,
+    2140,
+    641,
+    180,
+    49
+  ],
+  "conv_frac": 0.44110107421875,
+  "osc_frac": 0.2806854248046875,
+  "div_frac": 0.0028228759765625,
+  "nan_frac": 0.275390625,
+  "seconds": 102.06706404685974,
+  "config": {
+    "name": "G1_float32",
+    "x_name": "lr",
+    "y_name": "beta",
+    "x_range": [
+      0.01,
+      10.0
+    ],
+    "y_range": [
+      0.0,
+      0.99
+    ],
+    "x_log": true,
+    "y_log": false,
+    "resolution": 256,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "tanh",
+    "optimizer": "momentum",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 0,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 1,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float32",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

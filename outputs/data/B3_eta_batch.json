@@ -1,0 +1,58 @@
+{
+  "name": "B3_eta_batch",
+  "note": "сечение (eta,B), |D|=32",
+  "D": NaN,
+  "sigma": NaN,
+  "box_sizes": [
+    2,
+    4
+  ],
+  "box_counts": [
+    543,
+    229
+  ],
+  "conv_frac": 0.36553955078125,
+  "osc_frac": 0.0543212890625,
+  "div_frac": 0.034423828125,
+  "nan_frac": 0.54571533203125,
+  "seconds": 118.36902284622192,
+  "config": {
+    "name": "B3_eta_batch",
+    "x_name": "lr",
+    "y_name": "batch",
+    "x_range": [
+      0.1,
+      1000.0
+    ],
+    "y_range": [
+      1,
+      32
+    ],
+    "x_log": true,
+    "y_log": false,
+    "resolution": 512,
+    "resolution_y": 32,
+    "n_iter": 400,
+    "activation": "tanh",
+    "optimizer": "sgd",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 0,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 32,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

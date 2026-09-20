@@ -1,0 +1,64 @@
+{
+  "name": "F_zoom0",
+  "note": "зум уровня 0",
+  "D": 1.6793704088487718,
+  "sigma": 0.05261237096577494,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "box_counts": [
+    4750,
+    1891,
+    568,
+    163,
+    48
+  ],
+  "conv_frac": 0.4349365234375,
+  "osc_frac": 0.25555419921875,
+  "div_frac": 0.052337646484375,
+  "nan_frac": 0.257171630859375,
+  "seconds": 43.40180540084839,
+  "config": {
+    "name": "F_zoom0",
+    "x_name": "lr",
+    "y_name": "beta",
+    "x_range": [
+      0.011681932086110704,
+      11.681932086110704
+    ],
+    "y_range": [
+      0.0,
+      0.795293542074364
+    ],
+    "x_log": true,
+    "y_log": false,
+    "resolution": 256,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "tanh",
+    "optimizer": "momentum",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 0,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 1,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}

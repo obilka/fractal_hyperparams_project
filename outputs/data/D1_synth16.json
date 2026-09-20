@@ -1,0 +1,64 @@
+{
+  "name": "D1_synth16",
+  "note": "случайные данные, |D|=16",
+  "D": 1.2843570707349126,
+  "sigma": 0.0696158660117773,
+  "box_sizes": [
+    2,
+    4,
+    8,
+    16,
+    32
+  ],
+  "box_counts": [
+    1086,
+    551,
+    245,
+    92,
+    31
+  ],
+  "conv_frac": 0.394805908203125,
+  "osc_frac": 0.0159149169921875,
+  "div_frac": 0.02325439453125,
+  "nan_frac": 0.5660247802734375,
+  "seconds": 63.03753447532654,
+  "config": {
+    "name": "D1_synth16",
+    "x_name": "lr0",
+    "y_name": "lr1",
+    "x_range": [
+      0.1,
+      1000.0
+    ],
+    "y_range": [
+      0.1,
+      1000.0
+    ],
+    "x_log": true,
+    "y_log": true,
+    "resolution": 256,
+    "resolution_y": 0,
+    "n_iter": 400,
+    "activation": "tanh",
+    "optimizer": "sgd",
+    "hidden": 16,
+    "lr0": 0.1,
+    "lr1": 0.1,
+    "beta": 0.0,
+    "wd": 0.0,
+    "batch": 16,
+    "beta1": 0.9,
+    "beta2": 0.999,
+    "eps": 1e-08,
+    "data": {
+      "kind": "synthetic",
+      "n_samples": 16,
+      "d_in": 16,
+      "d_out": 16,
+      "seed": 42
+    },
+    "dtype": "float64",
+    "init_scale": 1.0,
+    "chunk": 4096
+  }
+}
